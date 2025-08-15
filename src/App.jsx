@@ -10,6 +10,7 @@ import "./styles/theme-f.css";
 import ConfigPanel from "./components/ConfigPanel";
 import settingIcon from "./assets/setting-icon.png";
 import CommandBar from "./components/Commandbar";
+import OrderPhotos from "./components/orderPhotos";
 
 function App() {
   const sample = [
@@ -39,6 +40,7 @@ function App() {
   const [theme, setTheme] = useState("theme-b");
   const [isConfigPanelOpen, setIsConfigPanelOpen] = useState(false);
   const [isCommandBarOpen, setCommandBarOpen] = useState(false);
+  const [isOrderPhotosOpen, setIsOrderPhotosOpen] = useState(false);
   const [showSample, setShowSample] = useState(true);
   const commands = [
     {
@@ -69,7 +71,7 @@ function App() {
       label: "switch theme d",
       action: () => setTheme("theme-d"),
     },
-      {
+    {
       label: "switch theme f",
       action: () => setTheme("theme-f"),
     },
@@ -100,65 +102,58 @@ function App() {
   useEffect(() => {
     if (showSample) {
       setPhotos(sample);
-    }else{
+    } else {
       setPhotos([]);
     }
   }, [showSample]);
 
-
-    useEffect(()=>{
-    document.addEventListener("keydown",e=>{
-      if(!isCommandBarOpen){
-
-        if((e.ctrlKey || e.metaKey) && e.key === "k"){
+  useEffect(() => {
+    document.addEventListener("keydown", (e) => {
+      if (!isCommandBarOpen) {
+        if ((e.ctrlKey || e.metaKey) && e.key === "k") {
           e.preventDefault();
           setCommandBarOpen(true);
         }
-      }else{
-        if(e.key === "Escape"){
+      } else {
+        if (e.key === "Escape") {
           e.preventDefault();
           setCommandBarOpen(false);
         }
       }
-
-    })
-  },[])
-
+    });
+  }, []);
 
   return (
     <>
-    <div className="flex-btw">
-   <button
-        className="config-panel-btn"
-        onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)}
-      >
-        Config{" "}
-        <img
-          src={settingIcon}
-          alt="Settings"
-          style={{ width: 16, height: 16 }}
-        />
-      </button> 
-      
-      <div
-        id="drop-zone"
-        onDrop={handleDrop}
-        onDragOver={(e) => e.preventDefault()}
-      >
-        drop here or{" "}
-        <input
-          type="file"
-          name="file"
-          id="file-input"
-          multiple
-          onChange={handleInput}
-          accept="image/*"
-        />
-      </div>
+      <div className="flex-btw">
+        <button
+          className="config-panel-btn"
+          onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)}
+        >
+          Config{" "}
+          <img
+            src={settingIcon}
+            alt="Settings"
+            style={{ width: 16, height: 16 }}
+          />
+        </button>
 
-    </div>
-     
-   
+        <div
+          id="drop-zone"
+          onDrop={handleDrop}
+          onDragOver={(e) => e.preventDefault()}
+        >
+          drop here or{" "}
+          <input
+            type="file"
+            name="file"
+            id="file-input"
+            multiple
+            onChange={handleInput}
+            accept="image/*"
+          />
+        </div>
+      </div>
 
       <Slideshow photos={photos} mode={operatingMode} theme={theme} />
 
@@ -169,25 +164,34 @@ function App() {
           setIsConfigPanelOpen={setIsConfigPanelOpen}
           theme={theme}
           operatingMode={operatingMode}
+          openOrderPhotos={() => setIsOrderPhotosOpen(true)}
         />
       )}
+
       {isCommandBarOpen && (
         <CommandBar setCommandBarOpen={setCommandBarOpen} commands={commands} />
       )}
-             <p>
-            Press <kbd>Ctrl</kbd> + <kbd>K</kbd> to open command bar
-        </p>
-        <p>
-          current theme: {theme}
-        </p>
-        <p>
-          current mode: {operatingMode}
-        </p>
-        <p>
-          <input type="checkbox" checked={showSample} onChange={(e) => setShowSample(e.target.checked)} />
-          Show Sample Photos
-        </p>
 
+      {isOrderPhotosOpen && (
+        <OrderPhotos
+          photos={photos}
+          setPhotos={setPhotos}
+          close={() => setIsOrderPhotosOpen(false)}
+        />
+      )}
+      <p>
+        Press <kbd>Ctrl</kbd> + <kbd>K</kbd> to open command bar
+      </p>
+      <p>current theme: {theme}</p>
+      <p>current mode: {operatingMode}</p>
+      <p>
+        <input
+          type="checkbox"
+          checked={showSample}
+          onChange={(e) => setShowSample(e.target.checked)}
+        />
+        Show Sample Photos
+      </p>
     </>
   );
 }

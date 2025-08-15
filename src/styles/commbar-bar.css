@@ -1,5 +1,5 @@
 .cmd-con{
-    position: absolute;
+    position: fixed;
 inset: 0;
     background: rgba(59, 59, 59, 0.247);
     border-bottom: 1px solid #eee;
