@@ -36,8 +36,8 @@ function App() {
     },
   ];
   const [photos, setPhotos] = useState([]);
-  const [operatingMode, setOperatingMode] = useState("random");
-  const [theme, setTheme] = useState("theme-b");
+  const [operatingMode, setOperatingMode] = useState("manual");
+  const [theme, setTheme] = useState("theme-a");
   const [isConfigPanelOpen, setIsConfigPanelOpen] = useState(false);
   const [isCommandBarOpen, setCommandBarOpen] = useState(false);
   const [isOrderPhotosOpen, setIsOrderPhotosOpen] = useState(false);

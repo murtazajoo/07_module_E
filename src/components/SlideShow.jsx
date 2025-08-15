@@ -81,7 +81,6 @@ export default function Slideshow({ photos, mode, theme }) {
     );
     function handleKeyForManual(e) {
       if (mode === "manual") {
-        if (isTransitioning) return;
         if (e.key === "ArrowLeft") {
           prevPhoto();
         } else if (e.key === "ArrowRight") {
