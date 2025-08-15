@@ -71,6 +71,10 @@ function App() {
       label: "switch theme d",
       action: () => setTheme("theme-d"),
     },
+      {
+      label: "switch theme-e",
+      action: () => setTheme("theme-e"),
+    },
     {
       label: "switch theme f",
       action: () => setTheme("theme-f"),
