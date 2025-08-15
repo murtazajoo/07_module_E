@@ -9,7 +9,12 @@ export default function OrderPhotos({ photos, setPhotos, close }) {
             <img src={photo.fileUrl} alt={photo.caption} />
           </div>
         ))}
-        <button className="close-btn" onClick={() => close()}>
+        <button 
+        style={{
+            backgroundColor: "red",
+            color: "white"
+        }}
+        className="close-btn" onClick={() => close()}>
           Close
         </button>
       </div>

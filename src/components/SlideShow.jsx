@@ -25,7 +25,7 @@ export default function Slideshow({ photos, mode, theme }) {
   );
 
   const nextPhoto = useCallback(() => {
-    const newIndex = (currentIndex + 1) % photos.length;
+    const newIndex = currentIndex >= photos.length - 1 ? 0 : currentIndex + 1;
     changePhoto(newIndex);
   }, [currentIndex, photos.length, changePhoto]);
 
@@ -79,24 +79,30 @@ export default function Slideshow({ photos, mode, theme }) {
     document.addEventListener("fullscreenchange", () =>
       setIsFullscreen(!!document.fullscreenElement)
     );
-    function handleKeyForManual(e) {
-      if (mode === "manual") {
-        if (e.key === "ArrowLeft") {
-          prevPhoto();
-        } else if (e.key === "ArrowRight") {
-          nextPhoto();
-        }
-      }
-    }
 
-    document.addEventListener("keydown", handleKeyForManual);
+
     return () => {
-      document.removeEventListener("fullscreenchange", () =>
+        document.removeEventListener("fullscreenchange", () =>
         setIsFullscreen(!!document.fullscreenElement)
       );
-      document.removeEventListener("keydown", handleKeyForManual);
     };
-  }, []);
+}, []);
+
+useEffect(()=>{
+    function handleKeyForManual(e) {
+        if (mode === "manual") {
+            if (e.key === "ArrowLeft") {
+                prevPhoto();
+            } else if (e.key === "ArrowRight") {
+                nextPhoto();
+            }
+        }
+    }
+    document.addEventListener("keydown", handleKeyForManual);
+    return () => {
+        document.removeEventListener("keydown", handleKeyForManual);
+    };
+}, [mode, prevPhoto, nextPhoto]);
 
   if (!photos || photos.length === 0) {
     return <div>No photos available</div>;
