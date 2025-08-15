@@ -1,0 +1,26 @@
+@keyframes fadeScale {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+.theme-f .photo-wrapper {
+  animation: fadeScale 1s linear forwards;
+}
+
+.theme-f .caption span{
+  transform: translateY(100%);
+  opacity: 0;
+  animation: slideInFromBottom 0.3s ease-out forwards ;
+  display: inline-block;
+}
+
+.theme-f .exit {
+
+  animation: fadeScaleOut 0.5s ease-out forwards;
+  animation-delay: 300ms; /* Caption is delayed [cite: 59] */
+}
+
+@keyframes fadeScaleOut {
+  from { transform: scale(1); opacity: 1; }
+  to { transform: scale(0.5); opacity: 0; }
+}
+

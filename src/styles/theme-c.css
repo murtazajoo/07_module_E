@@ -1,0 +1,26 @@
+@keyframes slideInFromBottom {
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(0); opacity: 1; }
+}
+.theme-c .photo-wrapper {
+  animation: slideInFromBottom 1s linear forwards;
+}
+
+.theme-c .caption span{
+  transform: translateY(100%);
+  opacity: 0;
+  animation: slideInFromBottom 1s ease-out forwards ;
+  display: inline-block;
+}
+
+.theme-c .exit {
+
+  animation: slideOutFromTop 0.5s ease-out forwards;
+  animation-delay: 300ms; /* Caption is delayed [cite: 59] */
+}
+
+@keyframes slideOutFromTop {
+  from { transform: translateY(0%); opacity: 0; }
+  to { transform: translateY(-100%); opacity: 1; }
+}
+

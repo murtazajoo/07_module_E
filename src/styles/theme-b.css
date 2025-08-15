@@ -1,0 +1,23 @@
+@keyframes slideInFromLeft {
+  0% { transform: translateX(-100%);  }
+  /* 25% { transform: translateX(-50%);  } */
+  /* 75%{transform: translateX(50%);  } */
+  100% { transform: translateX(0);  }
+}
+
+@keyframes slideOutFromRight {
+  from { transform: translateX(0%); opacity: 1; }
+  to { transform: translateX(100%); opacity: 0; }
+}
+.theme-b .photo-wrapper {
+  animation: slideInFromLeft 1s ease-out forwards;
+}
+.theme-b .caption {
+  animation: slideInFromLeft 1s ease-out forwards;
+  animation-delay: 300ms;
+}
+.theme-b .exit {
+  animation: slideOutFromRight 0.5s ease-out forwards;
+  animation-delay: 300ms; 
+}
+

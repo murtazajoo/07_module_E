@@ -1,0 +1,59 @@
+@keyframes slideInFromLeftD {
+  from { transform: translateX(-100%) ; }
+  to { transform: translateX(0) ; }
+}
+.theme-d .photo-wrapper {
+  animation: slideInFromLeftD 0.5s ease-out forwards;
+}
+.theme-d .caption span{
+  animation: slideInFromLeftD 0.5s ease-out forwards;
+  display: inline-block; /* Ensure the animation applies correctly */
+}
+
+.theme-d img{
+  border: 3px solid rgb(255, 255, 255);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.theme-d .caption{
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin: 0 auto;
+  bottom: -30px;
+  right: 0;
+  left: 0;
+   width: 85%;
+   box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+
+}
+
+.theme-d .photo{
+  position: absolute;
+  inset: 0;
+display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+
+
+
+.theme-d img {
+  width: 85%;
+  height: auto;
+  margin: 0 auto;
+
+}
+
+.slideshow.fullscreen.theme-d img {
+  width: 85%;
+  height: 80vh;
+  object-fit: cover;
+}
+
+.theme-d.slideshow.fullscreen .photo{
+  margin: 0 auto;
+  left: auto;
+  right: auto;
+}

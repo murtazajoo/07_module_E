@@ -1,0 +1,118 @@
+.theme-e  .current-photo{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-e  .first-half{
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: 0%;
+    perspective: 550px;
+    transform-origin: left;
+    transition: all 1s;
+}
+
+.theme-e  .second-half{
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-size: cover;
+    background-position: 50%;
+    transform-origin: right;
+    transition: all 1s;
+}
+
+.theme-e  .over-lap{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-origin: center;
+    transition: all 1s;
+    z-index: 1000;
+    inset: 0;
+}
+
+.theme-e .over-lap img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+@keyframes openFirst {
+        0% {
+            transform: perspective(1200px)  rotateY(0deg) skew(0deg,30deg);
+        }
+        100% {
+            transform: perspective(1200px)  rotateY(-105deg) skew(0deg,0deg);
+        }
+}
+
+@keyframes openRight {
+        0% {
+            transform: perspective(1200px)  rotateY(0deg) skew(0deg,-30deg);
+        }
+        100% {
+            transform: perspective(1200px)  rotateY(105deg) skew(0deg,0deg);
+        }
+}
+
+
+.theme-e  .exit.first-half {
+    animation: openFirst 1s forwards;
+}
+
+.theme-e .exit.second-half {
+    animation: openRight 1s forwards;
+}
+
+
+
+@keyframes closeOverlay {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.theme-e .over-lap.exit {
+    animation: closeOverlay 1s forwards;
+}
+
+@keyframes enterOverlay {
+    0% {
+        transform: scale(0.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.theme-e .over-lap.enter {
+    animation: enterOverlay 1s forwards;
+}
+
+
+@keyframes enterHalves {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.theme-e .first-half.enter,
+.theme-e .second-half.enter {
+    animation: enterHalves 4s forwards;
+}

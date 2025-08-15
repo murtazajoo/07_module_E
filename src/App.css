@@ -1,0 +1,112 @@
+
+.slideshow img {
+  width: 100%;
+  height: auto;  /* object-fit: cover; */
+  display: block;
+}
+
+.slideshow {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  align-items: center;
+    max-width: 850px;
+    height: 800px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.slideshow.fullscreen img {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.photo-wrapper {
+  position: relative;
+}
+
+.slideshow .caption {
+  position: absolute;
+  bottom: 0px;
+  background-color: white;
+  color: black;
+  width: fit-content;
+  padding: 4px;
+  border-top-right-radius: 5px;
+}
+
+
+.manual-handle {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: black;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: absolute;
+  z-index: 2;
+}
+
+.manual-handle:hover {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.manual-handle.prev{
+  margin-right: 8px;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.manual-handle.next {
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+.fullscreen-button {
+  background-color: rgb(255, 255, 255);
+  color: black;
+  border: none;
+  float: right;
+  margin: 5px;
+  border-radius: 5px;
+  padding: 16px 32px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  z-index: 2;
+}
+
+.flex-btw{
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+.config-panel-btn{
+  background-color: rgb(255, 255, 255);
+  color: black;
+  border: none;
+  margin: 5px;
+  border-radius: 5px;
+  padding: 16px 32px;
+  cursor: pointer;
+  display: flex;
+align-self: flex-end;
+  align-items: center;
+  gap: 4px;
+}
+
+
+
+#drop-zone {
+  border: 2px dashed #ccc;
+  padding: 16px;
+  text-align: center;
+  width: 100%;
+}
